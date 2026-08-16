@@ -1,0 +1,11 @@
+# Ignore all data files by default
+data/*
+
+# Ignore virtual environments, compiled Python files, and environment files
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Ignore all models by default
+models/*
