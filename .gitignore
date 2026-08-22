@@ -1,11 +1,38 @@
-# Ignore all data files by default
-data/*
-
-# Ignore virtual environments, compiled Python files, and environment files
+# Python virtual environments
+myenv/
 venv/
-__pycache__/
-*.pyc
-.env
+.venv/
+env/
 
-# Ignore all models by default
-models/*
+# Python caches and build files
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Local configuration and operating-system files
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Project logs
+logs/
+*.log
+*.log.log
+
+# Local datasets
+data/raw/*
+data/preprocessed/*
+
+# Generated models and preprocessing artifacts
+models/artifacts/*
+models/baseline/*
+models/improved/*
+*.joblib
+*.pkl
