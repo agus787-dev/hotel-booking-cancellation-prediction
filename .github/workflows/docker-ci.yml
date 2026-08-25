@@ -41,7 +41,14 @@ jobs:
         run: |
           docker run -d --name test-container -p 8000:8000 \
             asadbook/hotel-booking-api:latest
+            
           sleep 10
+
+          echo "=== CONTAINER STATUS ==="
+          docker ps -a
+
+          echo "=== CONTAINER LOGS ==="
+          docker logs test-container
 
       # 6️⃣ Health check + Prediction test
       - name: Health check and prediction test
