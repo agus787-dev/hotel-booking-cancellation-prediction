@@ -1,0 +1,23 @@
+# Virtual environments
+myenv/
+__pycache__/
+
+# Jupyter
+.ipynb_checkpoints/
+.ipynb
+
+# Git
+.git/
+.gitignore
+
+# Data files
+*.csv
+*.parquet
+data/
+
+# Environment variables
+.env
+
+# OS / Logs
+*.log
+.DS_Store

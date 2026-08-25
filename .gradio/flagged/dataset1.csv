@@ -1,0 +1,7 @@
+Hotel,Lead Time,Arrival Month,Arrival Week Number,Arrival Day of Month,Weekend Nights,Week Nights,Adults,Children,Babies,Meal,Country,Market Segment,Distribution Channel,Repeated Guest,Previous Cancellations,Previous Bookings Not Canceled,Reserved Room Type,Assigned Room Type,Booking Changes,Deposit Type,Days in Waiting List,Customer Type,ADR,Required Car Parking Spaces,Total Special Requests,City,Prediction Result,timestamp
+City Hotel,45,July,27,15,1,2,2,0,0,BB,PRT,Online TA,TA/TO,0,0,0,A,A,0,No Deposit,0,Transient,100,0,0,Lisbon,"Prediction: Canceled
+Cancellation Probability: 79.36%
+Threshold: 0.56",2026-08-26 01:24:48.321439
+Resort Hotel,45,December,27,15,1,2,2,0,0,FB,PRT,Online TA,TA/TO,1,0,0,A,A,0,No Deposit,0,Transient,100,1,1,Lisbon,"Prediction: Canceled
+Cancellation Probability: 74.19%
+Threshold: 0.56",2026-08-26 01:27:44.725122
