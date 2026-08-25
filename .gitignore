@@ -31,8 +31,8 @@ data/raw/*
 data/preprocessed/*
 
 # Models
-models/artifacts/*
-models/baseline/*
-models/improved/*
-*.joblib
-*.pkl
+# models/artifacts/*
+# models/baseline/*
+# models/improved/*
+# *.joblib
+# *.pkl
