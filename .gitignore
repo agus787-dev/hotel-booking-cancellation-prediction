@@ -30,7 +30,7 @@ logs/
 data/raw/*
 data/preprocessed/*
 
-# Generated models and preprocessing artifacts
+# Models
 models/artifacts/*
 models/baseline/*
 models/improved/*
