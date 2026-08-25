@@ -1,6 +1,6 @@
 # Hotel Booking Cancellation Prediction
 
-Machine-learning project for exploring hotel booking data and predicting whether a reservation will be canceled.
+Machine-learning project for exploring hotel booking data and predicting whether a reservation will be canceled
 
 ## Quick Links
 
