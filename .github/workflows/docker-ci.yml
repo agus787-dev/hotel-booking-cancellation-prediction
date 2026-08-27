@@ -104,3 +104,26 @@ jobs:
         if: always()
         run: |
           docker rm -f test-container || true
+
+  deploy-to-ec2:
+    needs: build-test-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      # 9️⃣ Deploy to EC2 by pulling the new image and restarting the container
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker pull asadbook/hotel-booking-api:latest
+            docker stop hotel-api || true
+            docker rm hotel-api || true
+            docker run -d --name hotel-api -p 8000:8000 --restart unless-stopped \
+              asadbook/hotel-booking-api:latest
+
+            sleep 5
+            echo "=== Deployed container status ==="
+            docker ps -a | grep hotel-api
