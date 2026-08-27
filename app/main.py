@@ -2,21 +2,26 @@ import sys
 from pathlib import Path
 
 sys.path.append("..")
+
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT_DIR))
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
+import gradio as gr
 
 from src.inference_pipeline import InferencePipeline
+from demo.app import demo
+
 
 app = FastAPI(
-    title = "Hotel Booking Cancellation Prediction API",
-    description = "Predicts whether a hotel booking is likely to be canceled",
+    title="Hotel Booking Cancellation Prediction API",
+    description="Predicts whether a hotel booking is likely to be canceled",
     version="1.0.0"
 )
 
 pipeline = InferencePipeline(log_file="api.log")
+
 
 class BookingInput(BaseModel):
     hotel: str = Field(..., example="City Hotel")
@@ -47,6 +52,7 @@ class BookingInput(BaseModel):
     total_of_special_requests: int = Field(..., example=0)
     city: str = Field(..., example="Lisbon")
 
+
 class PredictionOutput(BaseModel):
     prediction: int
     prediction_label: str
@@ -56,7 +62,11 @@ class PredictionOutput(BaseModel):
 
 @app.get("/")
 def root():
-    return {"status": "ok", "message": "Hotel Booking Cancellation Prediction API is running"}
+    return {
+        "status": "ok",
+        "message": "Hotel Booking Cancellation Prediction API is running"
+    }
+
 
 @app.get("/health")
 def health_check():
@@ -75,10 +85,25 @@ def predict(booking: BookingInput):
             probability=result["probability"],
             threshold=result["threshold"]
         )
+
     except Exception as e:
         pipeline.logger.info(f"Prediction failed: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
 
+
+app = gr.mount_gradio_app(
+    app,
+    demo,
+    path="/gradio"
+)
+
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True
+    )
