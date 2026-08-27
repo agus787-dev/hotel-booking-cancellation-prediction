@@ -59,6 +59,10 @@ jobs:
           curl -f http://localhost:8000/health
 
           echo ""
+          echo "Testing /gradio..."
+          curl -f http://localhost:8000/gradio
+
+          echo ""
           echo "Testing /predict..."
 
           curl -f -X POST http://localhost:8000/predict \
